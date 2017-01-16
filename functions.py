@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 import telebot # Library of API bot.
 from telebot import types # Types from API bot
-import time
-import random
-import datetime
 import codecs
 import sys
-import json
 from os.path import exists
 import os
 import token
 import user
 import feedparser
 import owners
-#import re
 import logging
 import commands
 import subprocess
@@ -71,7 +66,7 @@ def command_ayuda(m):
 @bot.message_handler(commands=['acerca'])
 def command_acerca(m):
     cid = m.chat.id
-    bot.send_message( cid, 'Acerca de @RootAdminBot: Creado por NeoRanger - www.neositelinux.com')
+    bot.send_message( cid, 'Acerca de @ManjaroGroupBot: Creado por NeoRanger - www.neositelinux.com')
 
 @bot.message_handler(commands=['id'])
 def command_id(m):
@@ -85,7 +80,7 @@ def command_help(message):
     markup = types.InlineKeyboardMarkup()
     itembtnneo = types.InlineKeyboardButton('NeoRanger', url="telegram.me/NeoRanger")
     itembtnblog = types.InlineKeyboardButton('URL Blog', url="http://www.neositelinux.com")
-    itembtnrepo = types.InlineKeyboardButton('Repo Github', url="http://github.com/neoranger/NeoBot")
+    itembtnrepo = types.InlineKeyboardButton('Repo Github', url="http://github.com/kernelpanicblog/manjarobot")
     markup.row(itembtnneo)
     markup.row(itembtnblog)
     markup.row(itembtnrepo)
