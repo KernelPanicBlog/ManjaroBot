@@ -112,11 +112,7 @@ def command_help(message):
 @bot.message_handler(commands=['blog'])
 def command_blog(m):
     cid = m.chat.id
-    if (cid == -1001030218798):
-        busqueda = 'https://kernelpanicblog.wordpress.com/search/%s/feed/rss'
-    else:
-        busqueda = 'https://www.neositelinux.com/search/%s/feed/rss'
-    
+    busqueda = 'https://kernelpanicblog.wordpress.com/search/%s/feed/rss'    
     if len(m.text.split()) >= 2:
         palabras = m.text.split()
         palabras.pop(0)
