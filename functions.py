@@ -76,7 +76,7 @@ def command_id(m):
     bot.send_message(cid, "You are: @" + str(username)+ " " + "And your Telegram ID is: " + str(uid))
 
 @bot.message_handler(commands=['support'])
-def command_help(message):
+def command_help(m):
     markup = types.InlineKeyboardMarkup()
     itembtnneo = types.InlineKeyboardButton('NeoRanger', url="telegram.me/NeoRanger")
     itembtnblog = types.InlineKeyboardButton('URL Blog', url="http://www.neositelinux.com")
@@ -84,7 +84,7 @@ def command_help(message):
     markup.row(itembtnneo)
     markup.row(itembtnblog)
     markup.row(itembtnrepo)
-    bot.send_message(message.chat.id, "Choose one supporter:", reply_markup=markup)
+    bot.send_message(m.chat.id, "Choose an option:", reply_markup=markup)
 
 @bot.message_handler(commands=['isos'])
 def command_help(message):
