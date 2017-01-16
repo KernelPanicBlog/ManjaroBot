@@ -140,6 +140,13 @@ def command_blog(m):
 #    else:
 #        bot.send_message( cid, "Missing Argument" )
     
+@bot.message_handler(commands=['feed'])
+def command_feed(m):
+    cid = m.chat.id
+    url = str(m.text).split(None,1)
+    print (url)
+    bot.send_message(cid, get_feed(url[1]),disable_web_page_preview=True,parse_mode="markdown")
+
 @bot.message_handler(commands=['neofeed'])
 def neo_feed(m):
     cid = m.chat.id
