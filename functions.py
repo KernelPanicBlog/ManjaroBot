@@ -159,6 +159,15 @@ def manjaro_feed(m):
     print (url)
     bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
 
+@bot.message_handler(commands=['mirrors'])
+def command_mirrors(m):
+    cid = m.chat.id
+    bot.send_message( cid, 
+        '''Para tener los mirrors actualizados y poder elegir\n
+        los mejores hay que usar el siguiente comando:\n
+        `sudo pacman-mirrors -g`\n
+        ''')
+
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
