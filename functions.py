@@ -49,9 +49,9 @@ def command_new_user(m):
     cid = m.chat.id
     grupo = m.chat.title
     if (m.new_chat_member.username != 'None'):
-        bot.send_message(cid, 'Bienvenido' + ' ' + unicode(m.new_chat_member.first_name) + ' ' + unicode(m.new_chat_member.last_name) + '!! ' + 'A.K.A. ' + '@' + str(m.new_chat_member.username) + ' a ' + unicode(grupo) + '. ' + 'Te sugerimos leer las reglas en el mensaje anclado.')
+        bot.send_message(cid, 'Bienvenido' + ' ' + unicode(m.new_chat_member.first_name) + ' ' + unicode(m.new_chat_member.last_name) + '!! ' + 'A.K.A. ' + '@' + str(m.new_chat_member.username) + ' a ' + unicode(grupo) + '. ' + 'Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.')
     else:
-        bot.send_message(cid, 'Bienvenido' + ' ' + str(m.new_chat_member.first_name) + ' ' + str(m.new_chat_member.last_name) + '!! ' + ' A ' + grupo + '. ' + 'No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado.')
+        bot.send_message(cid, 'Bienvenido' + ' ' + str(m.new_chat_member.first_name) + ' ' + str(m.new_chat_member.last_name) + '!! ' + ' A ' + grupo + '. ' + 'No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.')
 
 @bot.message_handler(content_types=['left_chat_member'])
 def command_left_user(m):
@@ -192,6 +192,21 @@ def command_mirrors(m):
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
+@bot.message_handler(commands=['mpis'])
+def command_mirrors(m):
+    cid = m.chat.id
+    mensaje = '''
+        MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando yaourt -S mpis --noconfirm. Algun comentario o sugerencia puedes hacerla en el grupo.
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+@bot.message_handler(commands=['github'])
+def command_mirrors(m):
+    cid = m.chat.id
+    mensaje = '''
+        Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS  https://github.com/KernelPanicBlog/.
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
