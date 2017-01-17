@@ -162,9 +162,33 @@ def manjaro_feed(m):
 @bot.message_handler(commands=['mirrors'])
 def command_mirrors(m):
     cid = m.chat.id
-    mensaje = '''Para tener los mirrors actualizados y poder elegir
+    mensaje = '''
+        Para tener los mirrors actualizados y poder elegir
         los mejores hay que usar el siguiente comando:
         `sudo pacman-mirrors -g`
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+@bot.message_handler(commands=['keys'])
+def command_mirrors(m):
+    cid = m.chat.id
+    mensaje = '''
+        Para refrescar las llaves necesarias:
+        `# pacman-key --init`
+        `# pacman-key --populate archlinux`
+        `# pacman-key --refresh-keys`
+
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+@bot.message_handler(commands=['update'])
+def command_mirrors(m):
+    cid = m.chat.id
+    mensaje = '''
+        Pasos para la actualización completa del sistema:
+        `# pacman -Sy`  (Sincroniza solo Base de Datos)
+        `# pacman -Syu  (Sincronización forzosa solo de Base de Datos)`
+        `# pacman -Syyu (Sincronización forzosa y actualización de paquetes)`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
