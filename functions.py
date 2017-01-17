@@ -163,9 +163,9 @@ def manjaro_feed(m):
 def command_mirrors(m):
     cid = m.chat.id
     bot.send_message( cid, 
-        '''Para tener los mirrors actualizados y poder elegir\n
-        los mejores hay que usar el siguiente comando:\n
-        `sudo pacman-mirrors -g`\n
+        '''Para tener los mirrors actualizados y poder elegir
+        los mejores hay que usar el siguiente comando:
+        \`sudo pacman-mirrors -g\`
         ''')
 
 ###############################################################################
