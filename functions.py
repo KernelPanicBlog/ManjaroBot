@@ -87,7 +87,7 @@ def command_help(m):
     bot.send_message(m.chat.id, "Choose an option:", reply_markup=markup)
 
 @bot.message_handler(commands=['isos'])
-def command_help(message):
+def command_help(m):
     markup = types.InlineKeyboardMarkup()
     xfce32 = types.InlineKeyboardButton('XFCE 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-16.10.3-stable-i686.iso.torrent")
     xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-16.10.3-stable-x86_64.iso.torrent")
@@ -101,7 +101,7 @@ def command_help(message):
     markup.row(kde64)
     markup.row(net32)
     markup.row(net64)
-    bot.send_message(message.chat.id, "Choose an ISO file for download:", reply_markup=markup)
+    bot.send_message(m.chat.id, "Choose an ISO file for download:", reply_markup=markup)
 
 
 @bot.message_handler(commands=['blog'])
