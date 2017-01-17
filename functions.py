@@ -192,6 +192,13 @@ def command_mirrors(m):
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
+@bot.message_handler(commands=['blogfeed'])
+def blog_feed(m):
+    cid = m.chat.id
+    url = str("https://kernelpanicblog.wordpress.com/feed/")
+    print (url)
+    bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
+
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
