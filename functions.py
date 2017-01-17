@@ -203,7 +203,7 @@ def blog_feed(m):
 def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
-        MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando yaourt -S mpis --noconfirm. Algun comentario o sugerencia puedes hacerla en el grupo.
+        MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando `yaourt -S mpis --noconfirm`. Algun comentario o sugerencia puedes hacerla en el grupo.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
