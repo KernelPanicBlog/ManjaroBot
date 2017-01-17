@@ -178,13 +178,5 @@ def send_message_checking_permission(m, response):
         return
     bot.send_message(cid, response)
 
-@bot.message_handler(func=lambda m: True)
-def response(m):
-    if(m.chat.type in ['group', 'supergroup']):
-        trg = get_triggers(m.chat.id)
-        if(trg):
-            for t in trg.keys():
-                if t.lower() in m.text.lower():
-                    bot.reply_to(m, trg[t])
 ###############################################################################
 print('Functions loaded')
