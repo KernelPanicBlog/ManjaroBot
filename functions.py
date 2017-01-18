@@ -76,7 +76,7 @@ def command_id(m):
     bot.send_message(cid, "You are: @" + str(username)+ " " + "And your Telegram ID is: " + str(uid))
 
 @bot.message_handler(commands=['support'])
-def command_help(m):
+def command_support(m):
     markup = types.InlineKeyboardMarkup()
     itembtnneo = types.InlineKeyboardButton('NeoRanger', url="telegram.me/NeoRanger")
     itembtnblog = types.InlineKeyboardButton('URL Blog', url="http://www.neositelinux.com")
@@ -87,7 +87,7 @@ def command_help(m):
     bot.send_message(m.chat.id, "Choose an option:", reply_markup=markup)
 
 @bot.message_handler(commands=['isos'])
-def command_help(m):
+def command_isos(m):
     markup = types.InlineKeyboardMarkup()
     xfce32 = types.InlineKeyboardButton('XFCE 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-16.10.3-stable-i686.iso.torrent")
     xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-16.10.3-stable-x86_64.iso.torrent")
@@ -170,7 +170,7 @@ def command_mirrors(m):
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['keys'])
-def command_mirrors(m):
+def command_keys(m):
     cid = m.chat.id
     mensaje = '''
         Para refrescar las llaves necesarias:
@@ -182,7 +182,7 @@ def command_mirrors(m):
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['update'])
-def command_mirrors(m):
+def command_update(m):
     cid = m.chat.id
     mensaje = '''
         Pasos para la actualización completa del sistema:
@@ -200,7 +200,7 @@ def blog_feed(m):
     bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['mpis'])
-def command_mirrors(m):
+def command_mpis(m):
     cid = m.chat.id
     mensaje = '''
         MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando `yaourt -S mpis --noconfirm`. Algun comentario o sugerencia puedes hacerla en el grupo.
@@ -208,7 +208,7 @@ def command_mirrors(m):
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['github'])
-def command_mirrors(m):
+def command_github(m):
     cid = m.chat.id
     mensaje = '''
         Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS https://github.com/KernelPanicBlog/
