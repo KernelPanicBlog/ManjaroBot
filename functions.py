@@ -134,27 +134,21 @@ def is_url_ok (url):
         return True
 
 
-@bot.message_handler(commands=['wiki'])
-def command_wiki(m):
-    cid = m.chat.id
-    busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
-    
-    if len(m.text.split()) >= 2:
-        palabras = m.text.split()
-        palabras.pop(0)
-        a_buscar = '+'.join(palabras)
-        url = (busqueda % a_buscar)
-	print (url)
-        r = requests.head(url)
-	print(r)
-        if r.status_code != 200:
-            return bot.send_message( cid, "Missing Argument" )
-        else:
-            #return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-	    return bot.send_message(cid, url,disable_web_page_preview=True,parse_mode="markdown")
-    
+# @bot.message_handler(commands=['wiki'])
+# def command_wiki(m):
+#     cid = m.chat.id
+#     busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
+#     if len(m.text.split()) >= 2:
+#         palabras = m.text.split()
+#         palabras.pop(0)
+#         a_buscar = '+'.join(palabras)
+#         url = (busqueda % a_buscar)
+#         r = requests.head(url)
+#         if r.status_code != 200:
+#             return bot.send_message( cid, "Missing Argument" )
+#         else:
+#             return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
 
-    
 @bot.message_handler(commands=['feed'])
 def command_feed(m):
     cid = m.chat.id
