@@ -205,18 +205,18 @@ def blog_feed(m):
 @bot.message_handler(commands=['mpis'])
 def command_mpis(m):
     cid = m.chat.id
-    mensaje = '''
-        MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando `yaourt -S mpis --noconfirm`. Algun comentario o sugerencia puedes hacerla en el grupo.
-        '''
-    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+    markup = types.InlineKeyboardMarkup()
+    itembtnmpis = types.InlineKeyboardButton('Blog', url="http://kernelpanicblog.wordpress.com")
+    markup.row(itembtnmpis)
+    bot.send_message(m.chat.id, 'MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando `yaourt -S mpis --noconfirm`. Algun comentario o sugerencia puedes hacerla en el grupo.',reply_markup=markup)
 
 @bot.message_handler(commands=['github'])
 def command_github(m):
     cid = m.chat.id
-    mensaje = '''
-        Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS https://github.com/KernelPanicBlog/
-        '''
-    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+    markup = types.InlineKeyboardMarkup()
+    itembtngit = types.InlineKeyboardButton('Repo Github', url="http://github.com/kernelpanicblog/mpis")
+    markup.row(itembtngit)
+    bot.send_message(m.chat.id, 'Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS',reply_markup=markup)
 
 ###############################################################################
 #Specials functions
