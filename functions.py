@@ -12,6 +12,7 @@ import owners
 import logging
 import commands
 import subprocess
+import requests
 
 TOKEN = token.token_id
 bot = telebot.TeleBot(TOKEN) # Creating our bot object.
@@ -121,19 +122,33 @@ def command_blog(m):
     else:
         bot.send_message( cid, "Missing Argument" )
         
-#@bot.message_handler(commands=['wiki'])
-#def command_wiki(m):
-#    cid = m.chat.id
-#    busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
-#    
-#    if len(m.text.split()) >= 2:
-#        palabras = m.text.split()
-#        palabras.pop(0)
-#        a_buscar = '+'.join(palabras)
-#        url = (busqueda % a_buscar)
-#        bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-#    else:
-#        bot.send_message( cid, "Missing Argument" )
+def is_url_ok (url):
+    try:
+        r = requests.head(url)
+    except:
+        return bot.send_message( cid, "Error" )
+
+    if r.status_code != 200:
+         return False
+    else:
+        return True
+
+
+@bot.message_handler(commands=['wiki'])
+def command_wiki(m):
+    cid = m.chat.id
+    busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
+    
+    if len(m.text.split()) >= 2:
+        palabras = m.text.split()
+        palabras.pop(0)
+        a_buscar = '+'.join(palabras)
+        url = (busqueda % a_buscar)
+        r = requests.head(url)
+        if r.status_code != 200:
+            return bot.send_message( cid, "Missing Argument" )
+        else:
+            return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
     
 @bot.message_handler(commands=['feed'])
 def command_feed(m):
@@ -167,8 +182,7 @@ def manjaro_feed(m):
 def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
-        Para tener los mirrors actualizados y poder elegir
-        los mejores hay que usar el siguiente comando:
+        Para tener los mirrors actualizados y poder elegir los mejores hay que usar el siguiente comando:
         `sudo pacman-mirrors -g`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
@@ -208,7 +222,7 @@ def command_mpis(m):
     markup = types.InlineKeyboardMarkup()
     itembtnmpis = types.InlineKeyboardButton('Blog', url="http://kernelpanicblog.wordpress.com")
     markup.row(itembtnmpis)
-    bot.send_message(m.chat.id, 'MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando `yaourt -S mpis --noconfirm`. Algun comentario o sugerencia puedes hacerla en el grupo.',reply_markup=markup)
+    bot.send_message(m.chat.id, 'MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando [yaourt -S mpis --noconfirm]. Algun comentario o sugerencia puedes hacerla en el grupo.',reply_markup=markup)
 
 @bot.message_handler(commands=['github'])
 def command_github(m):
