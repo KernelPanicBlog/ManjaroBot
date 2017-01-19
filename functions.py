@@ -122,18 +122,6 @@ def command_blog(m):
     else:
         bot.send_message( cid, "Missing Argument" )
         
-def is_url_ok (url):
-    try:
-        r = requests.head(url)
-    except:
-        return bot.send_message( cid, "Error" )
-
-    if r.status_code != 200:
-         return False
-    else:
-        return True
-
-
 # @bot.message_handler(commands=['wiki'])
 # def command_wiki(m):
 #     cid = m.chat.id
