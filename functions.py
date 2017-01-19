@@ -134,21 +134,81 @@ def is_url_ok (url):
         return True
 
 
+# @bot.message_handler(commands=['wiki'])
+# def command_wiki(m):
+#     cid = m.chat.id
+#     busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
+    
+#     if len(m.text.split()) >= 2:
+#         palabras = m.text.split()
+#         palabras.pop(0)
+#         a_buscar = '+'.join(palabras)
+#         url = (busqueda % a_buscar)
+#         r = requests.head(url)
+#         if r.status_code != 200:
+#             return bot.send_message( cid, "Missing Argument" )
+#         else:
+#             return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
+
+
 @bot.message_handler(commands=['wiki'])
 def command_wiki(m):
     cid = m.chat.id
-    busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
     
-    if len(m.text.split()) >= 2:
-        palabras = m.text.split()
-        palabras.pop(0)
-        a_buscar = '+'.join(palabras)
-        url = (busqueda % a_buscar)
-        r = requests.head(url)
-        if r.status_code != 200:
-            return bot.send_message( cid, "Missing Argument" )
+    try:
+        data = {
+            "format": "json",
+            "action": "opensearch",
+            "search": parameters["search"]
+            }
+        r = requests.get("http://es.wikipedia.org/w/api.php", params=data, timeout=20, headers=headers)
+        except requests.exceptions.ConnectionError:
+            text = "Connection Error"
+            #print (text)
+            return
+        except requests.exceptions.Timeout:
+            text = "Connection Timeout"
+            #print (text)
+            return
+        rres = r.json()
+        if len(rres[1]) > 0:
+            rres = rres[1][0]
+            try:
+                data = {
+                    "format": "json",
+                    "action": "query",
+                    "redirects": "true",
+                    "prop": "extracts",
+                    "exintro": "true",
+                    "explaintext": "true",
+                    "titles": rres
+                }
+            r = requests.get("https://wiki.manjaro.org/api.php", params=data, timeout=20, headers=headers)
+            except requests.exceptions.ConnectionError:
+                text = "Connection Error"
+                #print (text)
+                return
+            except requests.exceptions.Timeout:
+                text = "Connection Timeout"
+                #print (text)
+                return
+
+            resf = ""
+            for pag in r.json()['query']['pages']:
+                resf = "{0}{1}".format(resf, r.json()['query']['pages'][pag]['extract'])
+
+            if len(resf)<200:
+              resf = "La información es insuficiente. Por ejemplo si escribió \"¿Quién es Linus?\" pruebe con \"¿Quién es Linux Torvalds?\"." ;
+
+            if r.status_code == requests.codes.ok:
+                text = "\"{0}\" según Wikipedia: {1}".format(parameters["search"], resf) ;
+            else:
+                text = "Error"
         else:
-            return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
+            text = "No pude encontrar información acerca de \"{0}\" en Wikipeda".format(parameters["search"])
+    return {"text": text }
+
+
     
 @bot.message_handler(commands=['feed'])
 def command_feed(m):
