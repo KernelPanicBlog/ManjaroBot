@@ -177,7 +177,6 @@ def command_mirrors(m):
         `# pacman-key --init`
         `# pacman-key --populate archlinux`
         `# pacman-key --refresh-keys`
-
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -186,9 +185,9 @@ def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
         Pasos para la actualización completa del sistema:
-        `# pacman -Sy`  (Sincroniza solo Base de Datos)
-        `# pacman -Syu  (Sincronización forzosa solo de Base de Datos)`
-        `# pacman -Syyu (Sincronización forzosa y actualización de paquetes)`
+        `# pacman -Sy`   (Sincroniza solo Base de Datos)
+        `# pacman -Syu`  (Sincronización forzosa solo de Base de Datos)
+        `# pacman -Syyu` (Sincronización forzosa y actualización de paquetes)
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
