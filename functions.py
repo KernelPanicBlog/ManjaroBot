@@ -72,10 +72,10 @@ def command_left_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /acerca\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
-@bot.message_handler(commands=['acerca'])
-def command_acerca(m):
+@bot.message_handler(commands=['about'])
+def command_about(m):
     cid = m.chat.id
     bot.send_message( cid, 'Acerca de @ManjaroGroupBot: Creado por NeoRanger - www.neositelinux.com')
 
@@ -199,6 +199,17 @@ def command_update(m):
         `# pacman -Sy`   (Sincroniza solo Base de Datos)
         `# pacman -Syu`  (Sincronización forzosa solo de Base de Datos)
         `# pacman -Syyu` (Sincronización forzosa y actualización de paquetes)
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+    
+@bot.message_handler(commands=['orphans'])
+def command_huerfanos(m):
+    cid = m.chat.id
+    mensaje = '''
+        Para consultar si hay huerfanos usar:
+        `$ pacman -Qdt`
+        Si desea remover los paquetes huerfanos puede usar:
+        `sudo pacman -Rsn $(pacman -Qdtq)`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
