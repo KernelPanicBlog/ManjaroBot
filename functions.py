@@ -72,7 +72,7 @@ def command_left_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /youtubedl\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -175,8 +175,8 @@ def manjaro_feed(m):
 def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
-        Para tener los mirrors actualizados y poder elegir los mejores hay que usar el siguiente comando:
-        `sudo pacman-mirrors -g`
+Para tener los mirrors actualizados y poder elegir los mejores hay que usar el siguiente comando:
+`sudo pacman-mirrors -g`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -184,10 +184,10 @@ def command_mirrors(m):
 def command_keys(m):
     cid = m.chat.id
     mensaje = '''
-        Para refrescar las llaves necesarias:
-        `# pacman-key --init`
-        `# pacman-key --populate archlinux`
-        `# pacman-key --refresh-keys`
+Para refrescar las llaves necesarias (como root):
+`# pacman-key --init`
+`# pacman-key --populate archlinux`
+`# pacman-key --refresh-keys`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -195,10 +195,10 @@ def command_keys(m):
 def command_update(m):
     cid = m.chat.id
     mensaje = '''
-        Pasos para la actualización completa del sistema:
-        `# pacman -Sy`   (Sincroniza solo Base de Datos)
-        `# pacman -Syu`  (Sincronización forzosa solo de Base de Datos)
-        `# pacman -Syyu` (Sincronización forzosa y actualización de paquetes)
+Pasos para la actualización completa del sistema (como root):
+`# pacman -Sy`   (Sincroniza solo Base de Datos)
+`# pacman -Syu`  (Sincronización forzosa solo de Base de Datos)
+`# pacman -Syyu` (Sincronización forzosa y actualización de paquetes)
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
     
@@ -206,11 +206,31 @@ def command_update(m):
 def command_huerfanos(m):
     cid = m.chat.id
     mensaje = '''
-        Para consultar si hay huerfanos usar:
-        `$ pacman -Qdt`
-        Si desea remover los paquetes huerfanos puede usar:
-        `sudo pacman -Rsn $(pacman -Qdtq)`
+Para consultar si hay huerfanos usar:
+`$ pacman -Qdt`
+Si desea remover los paquetes huerfanos puede usar:
+`sudo pacman -Rsn $(pacman -Qdtq)`
         '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+
+@bot.message_handler(commands=['youtubedl'])
+def command_youtubedl(m):
+    cid = m.chat.id
+    mensaje = '''
+Uso de #youtube-dl
+Para buscar todos los formatos disponibles del vídeo:
+`youtube-dl -F URL`
+
+Para descargar el formato elegido del vídeo:
+`youtube-dl -f ID URL`
+
+Para descargar el vídeo con subtitulos (descargara todos los subtitulos existentes):
+`youtube-dl -f ID --write-sub --all-subs URL`
+
+Para Descargar solo los subtitulos del vídeo (descargara todos los subtitulos existentes):
+`youtube-dl --all-subs --skip-download URL`
+'''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['blogfeed'])
