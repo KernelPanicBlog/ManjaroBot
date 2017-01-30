@@ -186,7 +186,7 @@ def command_keys(m):
     mensaje = '''
 Para refrescar las llaves necesarias (como root):
 `# pacman-key --init`
-`# pacman-key --populate archlinux`
+`# pacman-key --populate archlinux manjaro`
 `# pacman-key --refresh-keys`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
