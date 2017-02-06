@@ -232,6 +232,37 @@ Para Descargar solo los subtitulos del vídeo (descargara todos los subtitulos e
 `youtube-dl --all-subs --skip-download URL`
 '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+    
+@bot.message_handler(commands=['basic_commands'])
+def command_basic(m):
+    cid = m.chat.id
+    mensaje = '''
+Comandos basicos para el manejo del sistema (como root):
+
+#Instalar paquetes
+`pacman -S “paquete”`  #Instala un paquete.
+`pacman -Sy “paquete”` #Sincroniza repositorios e instala el paquete.
+ 
+# Actualizar paquetes
+`pacman -Sy`   #Sincroniza repositorios.
+`pacman -Syy`  #Fuerza la sincronización de repositorios incluso para paquetes que parecen actualizados.
+`pacman -Syu`  #Sincroniza repositorios y actualiza paquetes.
+`pacman -Syyu` #Fuerza sincronización y actualiza paquetes.
+`pacman -Su`   #Actualiza paquetes sin sincronizar repositorios.
+ 
+# Buscar paquetes
+`pacman -Ss “paquete”` #Busca un paquete.
+`pacman -Si “paquete”` #Muestra información detallada de un paquete.
+`pacman -Sg “grupo”`   #Lista los paquetes que pertenecen a un grupo.
+`pacman -Qs “paquete”` #Busca un paquete YA instalado.
+`pacman -Qi “paquete”` #Muestra información detallada de un paquete YA instalado.
+`pacman -Qdt`          #Muestra paquetes huerfanos.
+ 
+# Eliminar paquetes
+`pacman -R “paquete”`  #Borra paquete sin sus dependencias.
+`pacman -Rs “paquete”` #Borra paquete y sus dependencias no utilizadas.
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['blogfeed'])
 def blog_feed(m):
