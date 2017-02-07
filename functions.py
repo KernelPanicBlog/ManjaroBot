@@ -207,7 +207,7 @@ def command_huerfanos(m):
     cid = m.chat.id
     mensaje = '''
 Para consultar si hay huerfanos usar:
-`$ pacman -Qdt`
+`$ pacman -Qdtq`
 Si desea remover los paquetes huerfanos puede usar:
 `sudo pacman -Rsn $(pacman -Qdtq)`
         '''
