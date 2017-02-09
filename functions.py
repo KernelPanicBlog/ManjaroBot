@@ -286,6 +286,14 @@ def command_github(m):
     itembtngit = types.InlineKeyboardButton('Repo Github', url="http://github.com/kernelpanicblog/mpis")
     markup.row(itembtngit)
     bot.send_message(m.chat.id, 'Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS',reply_markup=markup)
+    
+@bot.message_handler(commands=['virtualbox'])
+def command_virtualbox(m):
+    cid = m.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itembtnvbox = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Instalaci%C3%B3n-de-VirtualBox-02-09")
+    markup.row(itembtnvbox)
+    bot.send_message(m.chat.id, 'Como instalar VirtualBox en Arc-Manjaro-Antergos',reply_markup=markup)
 
 ###############################################################################
 #Specials functions
