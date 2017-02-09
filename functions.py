@@ -72,7 +72,7 @@ def command_left_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /virtualbox\n /youtubedl\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /virtualbox\n /youtubedl\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -294,6 +294,16 @@ def command_virtualbox(m):
     itembtnvbox = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Instalaci%C3%B3n-de-VirtualBox-02-09")
     markup.row(itembtnvbox)
     bot.send_message(m.chat.id, 'Como instalar VirtualBox en Arch-Manjaro-Antergos',reply_markup=markup)
+    
+@bot.message_handler(commands=['listpkg'])
+def command_listpkg(m):
+    cid = m.chat.id
+    mensaje = '''
+Para listar los paquetes instalados omitiendo los de
+base y base-devel, copia y pega éste comando en una terminal:
+`pacman -Qei | awk '/^Nombre/ { name=$3 } /^Grupos/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'`
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 ###############################################################################
 #Specials functions
