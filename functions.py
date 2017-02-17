@@ -309,7 +309,7 @@ base y base-devel, copia y pega éste comando en una terminal:
 def command_last_changes(m):
     cid = m.chat.id
     markup = types.InlineKeyboardMarkup()
-    itembtnchanges = types.InlineKeyboardButton('', url="https://gist.github.com/philmmanjaro/7982edda35d9a38cd31f6912c25a0cb1")
+    itembtnchanges = types.InlineKeyboardButton('Ir al Documento', url="https://gist.github.com/philmmanjaro/7982edda35d9a38cd31f6912c25a0cb1")
     markup.row(itembtnchanges)
     bot.send_message(m.chat.id, 'Ver los cambios en la ultima update',reply_markup=markup)
 
