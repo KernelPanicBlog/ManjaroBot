@@ -304,6 +304,14 @@ base y base-devel, copia y pega éste comando en una terminal:
 `pacman -Qei | awk '/^Nombre/ { name=$3 } /^Grupos/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+    
+@bot.message_handler(commands=['last_update_changes'])
+def command_last_changes(m):
+    cid = m.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itembtnchanges = types.InlineKeyboardButton('', url="https://gist.github.com/philmmanjaro/7982edda35d9a38cd31f6912c25a0cb1")
+    markup.row(itembtnchanges)
+    bot.send_message(m.chat.id, 'Ver los cambios en la ultima update',reply_markup=markup)
 
 ###############################################################################
 #Specials functions
