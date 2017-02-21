@@ -119,13 +119,13 @@ def command_isos(m):
 def command_blog(m):
     cid = m.chat.id
     busqueda = 'https://kernelpanicblog.wordpress.com/search/%s/feed/rss'    
-    if len(m.text.split()) >= 2:
+    try:
         palabras = m.text.split()
         palabras.pop(0)
         a_buscar = '+'.join(palabras)
         url = (busqueda % a_buscar)
         bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-    else:
+    except IndexError:
         bot.send_message( cid, "Missing Argument" )
         
 # @bot.message_handler(commands=['wiki'])
