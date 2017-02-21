@@ -145,10 +145,13 @@ def command_blog(m):
 
 @bot.message_handler(commands=['feed'])
 def command_feed(m):
-    cid = m.chat.id
-    url = str(m.text).split(None,1)
-    print (url)
-    bot.send_message(cid, get_feed(url[1]),disable_web_page_preview=True,parse_mode="markdown")
+    if len(m.text.split()) >= 2:
+        cid = m.chat.id
+        url = str(m.text).split(None,1)
+        print (url)
+        bot.send_message(cid, get_feed(url[1]),disable_web_page_preview=True,parse_mode="markdown")
+    else:
+        bot.send_message( cid, "Missing Argument - Example: */feed http://www.example.com/feed*" )
 
 @bot.message_handler(commands=['neofeed'])
 def neo_feed(m):
