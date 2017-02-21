@@ -119,13 +119,13 @@ def command_isos(m):
 def command_blog(m):
     cid = m.chat.id
     busqueda = 'https://kernelpanicblog.wordpress.com/search/%s/feed/rss'    
-    try:
+    if len(m.text.split()) >= 2:
         palabras = m.text.split()
         palabras.pop(0)
         a_buscar = '+'.join(palabras)
         url = (busqueda % a_buscar)
         bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-    except IndexError:
+    else:
         bot.send_message( cid, "Missing Argument" )
         
 # @bot.message_handler(commands=['wiki'])
@@ -145,13 +145,13 @@ def command_blog(m):
 
 @bot.message_handler(commands=['feed'])
 def command_feed(m):
-    if len(m.text.split()) >= 2:
-        cid = m.chat.id
-        url = str(m.text).split(None,1)
+    cid = m.chat.id
+    url = str(m.text).split(None,1)
+    try:
         print (url)
         bot.send_message(cid, get_feed(url[1]),disable_web_page_preview=True,parse_mode="markdown")
-    else:
-        bot.send_message( cid, "Missing Argument - Example: */feed http://www.example.com/feed*" )
+    except IndexError:
+        bot.send_message( cid, "Missing Argument - Example: /feed http://www.example.com" )
 
 @bot.message_handler(commands=['neofeed'])
 def neo_feed(m):
