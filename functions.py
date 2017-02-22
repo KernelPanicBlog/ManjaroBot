@@ -316,7 +316,7 @@ def command_last_changes(m):
     markup.row(itembtnchanges)
     bot.send_message(m.chat.id, 'Ver los cambios en la ultima update',reply_markup=markup)
     
-@bot.message_handler(commands=['Telegram'])
+@bot.message_handler(commands=['telegram'])
 def command_telegram(m):
     cid = m.chat.id
     mensaje = '''
