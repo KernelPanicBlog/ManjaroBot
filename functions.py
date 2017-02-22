@@ -72,7 +72,7 @@ def command_left_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /virtualbox\n /youtubedl\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, "Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -315,6 +315,22 @@ def command_last_changes(m):
     itembtnchanges = types.InlineKeyboardButton('Ir al Documento', url="https://gist.github.com/philmmanjaro/7982edda35d9a38cd31f6912c25a0cb1")
     markup.row(itembtnchanges)
     bot.send_message(m.chat.id, 'Ver los cambios en la ultima update',reply_markup=markup)
+    
+@bot.message_handler(commands=['Telegram'])
+def command_telegram(m):
+    cid = m.chat.id
+    mensaje = '''
+Como instalar Telegram desde la web oficial:
+
+1a) `wget https://telegram.org/dl/desktop/linux (64 Bits)`
+1b) `wget https://telegram.org/dl/desktop/linux32 (32 Bits)`
+2) `tar -xvf linux`
+3a) `mkdir /home/USUARIO/.TelegramDesktop`
+3b) `mv Telegram\ Desktop /home/USUARIO/.TelegramDesktop`
+4) `./Telegram`
+5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 ###############################################################################
 #Specials functions
