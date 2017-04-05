@@ -331,10 +331,20 @@ Como instalar Telegram desde la web oficial:
 2) `tar -xvf linux`
 3a) `mkdir /home/USUARIO/.TelegramDesktop`
 3b) `mv Telegram\ Desktop /home/USUARIO/.TelegramDesktop`
-4) `./Telegram`
-5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente
+4) `cd /home/USUARIO/.TelegramDesktop`
+4a) `./Telegram`
+5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+@bot.message_handler(commands=['blackscreen'])
+def command_blackscreen(m):
+    cid = m.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itembtnblckscr = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Pantalla-negra-al-iniciar-Manjaro-04-05")
+    markup.row(itembtnblckscr)
+    bot.send_message(m.chat.id, 'Solución a la pantalla negra en logueo del sistema.',reply_markup=markup)
+ 
 
 ###############################################################################
 #Specials functions
