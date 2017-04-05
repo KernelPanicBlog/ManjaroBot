@@ -344,8 +344,46 @@ def command_blackscreen(m):
     itembtnblckscr = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Pantalla-negra-al-iniciar-Manjaro-04-05")
     markup.row(itembtnblckscr)
     bot.send_message(m.chat.id, 'Solución a la pantalla negra en logueo del sistema.',reply_markup=markup)
- 
 
+@bot.message_handler(commands=['reset'])
+def command_reset(m):
+    cid = m.chat.id
+    mensaje = '''
+Volver Manjaro a su configuración original:
+`pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
+Esto borra todo a excepción del sistema base.
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+@bot.message_handler(commands=['aur_manual'])
+def command_aurmanual(m):
+    cid = m.chat.id
+    mensaje = '''
+Instalación Manual de paquetes del AUR, como se hacía antes de los aur helpers(yaourt, pacaur, etc), por si tienen problemas con alguno.
+https://wiki.archlinux.org/index.php/Arch_User_Repository
+
+Descarga del snapshot desde aur por web browser o asi por consola (tambien se puede clonar el git en su lugar)
+`$ curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/package_name.tar.gz`
+`$ tar -xvf package_name.tar.gz`
+`$ cd package_name`
+Si Se quiere verificar el PKGBUILD y el install para evitar sorpresas:
+`$ less PKGBUILD`
+`$ less package_name.install`
+Instalación con dependencias, recomendado ver ayuda del comando para otras opciones.
+`$ makepkg -si`
+Al finalizar se pueden eliminar los archivos.
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+ 
+@bot.message_handler(commands=['firefoxmaia'])
+def command_firefoxmaia(m):
+    cid = m.chat.id
+    mensaje = '''
+Por defecto Manjaro posee un tema gráfico que lo integra al tema propio Maia. Logran un buen trabajo pero se debe remover si se desea cambiar el tema y mantener la uniformidad.
+`rm -rf ~/.mozilla/firefox/*.default/chrome/*`
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+ 
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
