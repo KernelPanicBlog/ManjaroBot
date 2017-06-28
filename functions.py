@@ -72,7 +72,7 @@ def command_left_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /reset\n /firefoxmaia\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /reset\n /firefoxmaia\n /steam\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -183,7 +183,7 @@ def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
 Para tener los mirrors actualizados y poder elegir los mejores hay que usar el siguiente comando:
-`sudo pacman-mirrors -g`
+`$ sudo pacman-mirrors -g`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -216,7 +216,7 @@ def command_huerfanos(m):
 Para consultar si hay huerfanos usar:
 `$ pacman -Qdtq`
 Si desea remover los paquetes huerfanos puede usar:
-`sudo pacman -Rsn $(pacman -Qdtq)`
+`$ sudo pacman -Rsn $(pacman -Qdtq)`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -227,16 +227,16 @@ def command_youtubedl(m):
     mensaje = '''
 Uso de #youtube-dl
 Para buscar todos los formatos disponibles del vídeo:
-`youtube-dl -F URL`
+`$ youtube-dl -F URL`
 
 Para descargar el formato elegido del vídeo:
-`youtube-dl -f ID URL`
+`$ youtube-dl -f ID URL`
 
 Para descargar el vídeo con subtitulos (descargara todos los subtitulos existentes):
-`youtube-dl -f ID --write-sub --all-subs URL`
+`$ youtube-dl -f ID --write-sub --all-subs URL`
 
 Para Descargar solo los subtitulos del vídeo (descargara todos los subtitulos existentes):
-`youtube-dl --all-subs --skip-download URL`
+`$ youtube-dl --all-subs --skip-download URL`
 '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
     
@@ -251,23 +251,23 @@ Comandos basicos para el manejo del sistema (como root):
 `pacman -Sy “paquete”` #Sincroniza repositorios e instala el paquete.
  
 # Actualizar paquetes
-`pacman -Sy`   #Sincroniza repositorios.
-`pacman -Syy`  #Fuerza la sincronización de repositorios incluso para paquetes que parecen actualizados.
-`pacman -Syu`  #Sincroniza repositorios y actualiza paquetes.
-`pacman -Syyu` #Fuerza sincronización y actualiza paquetes.
-`pacman -Su`   #Actualiza paquetes sin sincronizar repositorios.
+`# pacman -Sy`   #Sincroniza repositorios.
+`# pacman -Syy`  #Fuerza la sincronización de repositorios incluso para paquetes que parecen actualizados.
+`# pacman -Syu`  #Sincroniza repositorios y actualiza paquetes.
+`# pacman -Syyu` #Fuerza sincronización y actualiza paquetes.
+`# pacman -Su`   #Actualiza paquetes sin sincronizar repositorios.
  
 # Buscar paquetes
-`pacman -Ss “paquete”` #Busca un paquete.
-`pacman -Si “paquete”` #Muestra información detallada de un paquete.
-`pacman -Sg “grupo”`   #Lista los paquetes que pertenecen a un grupo.
-`pacman -Qs “paquete”` #Busca un paquete YA instalado.
-`pacman -Qi “paquete”` #Muestra información detallada de un paquete YA instalado.
-`pacman -Qdt`          #Muestra paquetes huerfanos.
+`# pacman -Ss “paquete”` #Busca un paquete.
+`# pacman -Si “paquete”` #Muestra información detallada de un paquete.
+`# pacman -Sg “grupo”`   #Lista los paquetes que pertenecen a un grupo.
+`# pacman -Qs “paquete”` #Busca un paquete YA instalado.
+`# pacman -Qi “paquete”` #Muestra información detallada de un paquete YA instalado.
+`# pacman -Qdt`          #Muestra paquetes huerfanos.
  
 # Eliminar paquetes
-`pacman -R “paquete”`  #Borra paquete sin sus dependencias.
-`pacman -Rs “paquete”` #Borra paquete y sus dependencias no utilizadas.
+`# pacman -R “paquete”`  #Borra paquete sin sus dependencias.
+`# pacman -Rs “paquete”` #Borra paquete y sus dependencias no utilizadas.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
@@ -308,7 +308,7 @@ def command_listpkg(m):
     mensaje = '''
 Para listar los paquetes instalados omitiendo los de
 base y base-devel, copia y pega éste comando en una terminal:
-`pacman -Qei | awk '/^Nombre/ { name=$3 } /^Grupos/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'`
+`$ pacman -Qei | awk '/^Nombre/ { name=$3 } /^Grupos/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
     
@@ -326,13 +326,13 @@ def command_telegram(m):
     mensaje = '''
 Como instalar Telegram desde la web oficial:
 
-1a) `wget https://telegram.org/dl/desktop/linux (64 Bits)`
-1b) `wget https://telegram.org/dl/desktop/linux32 (32 Bits)`
-2) `tar -xvf linux`
-3a) `mkdir /home/USUARIO/.TelegramDesktop`
-3b) `mv Telegram\ Desktop /home/USUARIO/.TelegramDesktop`
-4) `cd /home/USUARIO/.TelegramDesktop`
-4a) `./Telegram`
+1a) `$ wget https://telegram.org/dl/desktop/linux (64 Bits)`
+1b) `$ wget https://telegram.org/dl/desktop/linux32 (32 Bits)`
+2) `$ tar -xvf linux`
+3a) `$ mkdir /home/USUARIO/.TelegramDesktop`
+3b) `$ mv Telegram\ Desktop /home/USUARIO/.TelegramDesktop`
+4) `$ cd /home/USUARIO/.TelegramDesktop`
+4a) `$ ./Telegram`
 5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
@@ -350,7 +350,7 @@ def command_reset(m):
     cid = m.chat.id
     mensaje = '''
 Volver Manjaro a su configuración original:
-`pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
+`$ sudo pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
 Esto borra todo a excepción del sistema base.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
@@ -380,7 +380,19 @@ def command_firefoxmaia(m):
     cid = m.chat.id
     mensaje = '''
 Por defecto Manjaro posee un tema gráfico que lo integra al tema propio Maia. Logran un buen trabajo pero se debe remover si se desea cambiar el tema y mantener la uniformidad.
-`rm -rf ~/.mozilla/firefox/*.default/chrome/*`
+`$ rm -rf ~/.mozilla/firefox/*.default/chrome/*`
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+
+@bot.message_handler(commands=['steam'])
+def command_steam(m):
+    cid = m.chat.id
+    mensaje = '''
+Para solucionar problemas con Steam:
+`$ sudo pacman -S steam-manjaro`
+`$ steam_install_workaround`
+`$ steam`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
  
