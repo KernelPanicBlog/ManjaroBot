@@ -8,10 +8,10 @@ def listener(messages):
         title = m.chat.title
         if m.content_type == 'text':
             print (("[" + unicode(title) + "]: " + m.text))
- 
-functions.bot.set_update_listener(listener)
-#############################################
 
+functions.bot.set_update_listener(listener)
+
+#############################################
 #Bot starts here
 print('Bot Started')
 print('Please visite kernelpanicblog.wordpress.com')

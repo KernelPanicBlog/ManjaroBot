@@ -100,14 +100,14 @@ def command_support(m):
 @bot.message_handler(commands=['isos'])
 def command_isos(m):
     markup = types.InlineKeyboardMarkup()
-    xfce32 = types.InlineKeyboardButton('XFCE 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.1-stable-i686.iso.torrent")
-    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.1-stable-x86_64.iso.torrent")
-    kde32 = types.InlineKeyboardButton('Plasma 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.1-stable-i686.iso.torrent")
-    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.1-stable-x86_64.iso.torrent")
-    gnome32 = types.InlineKeyboardButton('Gnome 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.1-stable-i686.iso.torrent")
-    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.1-stable-x86_64.iso.torrent")
-    net32 = types.InlineKeyboardButton('Net 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-net-16.08-i686.iso.torrent")
-    net64 = types.InlineKeyboardButton('Net 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-net-16.08-x86_64.iso.torrent")
+    xfce32 = types.InlineKeyboardButton('XFCE 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.2-stable-i686.iso.torrent")
+    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.2-stable-x86_64.iso.torrent")
+    kde32 = types.InlineKeyboardButton('Plasma 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.2-stable-i686.iso.torrent")
+    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.2-stable-x86_64.iso.torrent")
+    gnome32 = types.InlineKeyboardButton('Gnome 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.2-stable-i686.iso.torrent")
+    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.2-stable-x86_64.iso.torrent")
+    net32 = types.InlineKeyboardButton('Manjaro-Architect 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.2-stable-i686.iso.torrent")
+    net64 = types.InlineKeyboardButton('Manjaro-Architect 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.2-stable-x86_64.iso.torrent")
     markup.row(xfce32)
     markup.row(xfce64)
     markup.row(kde32)
@@ -131,7 +131,7 @@ def command_blog(m):
         bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
     else:
         bot.send_message( cid, "Missing Argument" )
-        
+
 # @bot.message_handler(commands=['wiki'])
 # def command_wiki(m):
 #     cid = m.chat.id
@@ -163,7 +163,7 @@ def neo_feed(m):
     url = str("https://neositelinux.com/feed/")
     print (url)
     bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-    
+
 @bot.message_handler(commands=['kdefeed'])
 def kde_feed(m):
     cid = m.chat.id
@@ -208,7 +208,7 @@ Pasos para la actualización completa del sistema (como root):
 `# pacman -Syyu` (Sincronización forzosa y actualización de paquetes)
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
-    
+
 @bot.message_handler(commands=['orphans'])
 def command_huerfanos(m):
     cid = m.chat.id
@@ -225,7 +225,7 @@ Si desea remover los paquetes huerfanos puede usar:
 def command_youtubedl(m):
     cid = m.chat.id
     mensaje = '''
-Uso de #youtube-dl
+Uso de `youtube-dl`
 Para buscar todos los formatos disponibles del vídeo:
 `$ youtube-dl -F URL`
 
@@ -239,7 +239,7 @@ Para Descargar solo los subtitulos del vídeo (descargara todos los subtitulos e
 `$ youtube-dl --all-subs --skip-download URL`
 '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
-    
+
 @bot.message_handler(commands=['basic_commands'])
 def command_basic(m):
     cid = m.chat.id
@@ -249,14 +249,14 @@ Comandos basicos para el manejo del sistema (como root):
 #Instalar paquetes
 `pacman -S “paquete”`  #Instala un paquete.
 `pacman -Sy “paquete”` #Sincroniza repositorios e instala el paquete.
- 
+
 # Actualizar paquetes
 `# pacman -Sy`   #Sincroniza repositorios.
 `# pacman -Syy`  #Fuerza la sincronización de repositorios incluso para paquetes que parecen actualizados.
 `# pacman -Syu`  #Sincroniza repositorios y actualiza paquetes.
 `# pacman -Syyu` #Fuerza sincronización y actualiza paquetes.
 `# pacman -Su`   #Actualiza paquetes sin sincronizar repositorios.
- 
+
 # Buscar paquetes
 `# pacman -Ss “paquete”` #Busca un paquete.
 `# pacman -Si “paquete”` #Muestra información detallada de un paquete.
@@ -264,7 +264,7 @@ Comandos basicos para el manejo del sistema (como root):
 `# pacman -Qs “paquete”` #Busca un paquete YA instalado.
 `# pacman -Qi “paquete”` #Muestra información detallada de un paquete YA instalado.
 `# pacman -Qdt`          #Muestra paquetes huerfanos.
- 
+
 # Eliminar paquetes
 `# pacman -R “paquete”`  #Borra paquete sin sus dependencias.
 `# pacman -Rs “paquete”` #Borra paquete y sus dependencias no utilizadas.
@@ -292,8 +292,8 @@ def command_github(m):
     markup = types.InlineKeyboardMarkup()
     itembtngit = types.InlineKeyboardButton('Repo Github', url="http://github.com/kernelpanicblog/mpis")
     markup.row(itembtngit)
-    bot.send_message(m.chat.id, 'Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorarme o aportar con /MPIS',reply_markup=markup)
-    
+    bot.send_message(m.chat.id, 'Contamos con el repositorio del Grupo en GITHUB donde puedes colaborar y ayudar a mejorar o aportar con /MPIS',reply_markup=markup)
+
 @bot.message_handler(commands=['virtualbox'])
 def command_virtualbox(m):
     cid = m.chat.id
@@ -301,7 +301,7 @@ def command_virtualbox(m):
     itembtnvbox = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Instalaci%C3%B3n-de-VirtualBox-02-09")
     markup.row(itembtnvbox)
     bot.send_message(m.chat.id, 'Como instalar VirtualBox en Arch-Manjaro-Antergos',reply_markup=markup)
-    
+
 @bot.message_handler(commands=['listpkg'])
 def command_listpkg(m):
     cid = m.chat.id
@@ -311,7 +311,7 @@ base y base-devel, copia y pega éste comando en una terminal:
 `$ pacman -Qei | awk '/^Nombre/ { name=$3 } /^Grupos/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
-    
+
 @bot.message_handler(commands=['last_update_changes'])
 def command_last_changes(m):
     cid = m.chat.id
@@ -319,7 +319,7 @@ def command_last_changes(m):
     itembtnchanges = types.InlineKeyboardButton('Ir al Documento', url="https://gist.github.com/philmmanjaro/7982edda35d9a38cd31f6912c25a0cb1")
     markup.row(itembtnchanges)
     bot.send_message(m.chat.id, 'Ver los cambios en la ultima update',reply_markup=markup)
-    
+
 @bot.message_handler(commands=['telegram'])
 def command_telegram(m):
     cid = m.chat.id
@@ -374,7 +374,7 @@ Instalación con dependencias, recomendado ver ayuda del comando para otras opci
 Al finalizar se pueden eliminar los archivos.
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
- 
+
 @bot.message_handler(commands=['firefoxmaia'])
 def command_firefoxmaia(m):
     cid = m.chat.id
@@ -395,14 +395,14 @@ Para solucionar problemas con Steam:
 `$ steam`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
- 
+
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
     cid = m.chat.id
     uid = m.from_user.id
     if uid != user.user_id:
-        bot.send_message(cid, "You can't use the bot")
+        bot.send_message(cid, "You don't have permissions for use this bot")
         return
     bot.send_message(cid, response)
 
