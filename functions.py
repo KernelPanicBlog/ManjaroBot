@@ -326,12 +326,11 @@ def command_telegram(m):
     mensaje = '''
 Como instalar Telegram desde la web oficial:
 
-1a) `$ wget https://telegram.org/dl/desktop/linux (64 Bits)`
-1b) `$ wget https://telegram.org/dl/desktop/linux32 (32 Bits)`
+1a) `$ wget https://telegram.org/dl/desktop/linux` (64 Bits)
+1b) `$ wget https://telegram.org/dl/desktop/linux32` (32 Bits)
 2) `$ tar -xvf linux`
-3a) `$ mkdir /home/USUARIO/.TelegramDesktop`
-3b) `$ mv Telegram\ Desktop /home/USUARIO/.TelegramDesktop`
-4) `$ cd /home/USUARIO/.TelegramDesktop`
+3) `$ mv Telegram  home/USUARIO/.local/share/applications`
+4) `$ cd home/USUARIO/.local/share/applications/Telegram`
 4a) `$ ./Telegram`
 5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
         '''
