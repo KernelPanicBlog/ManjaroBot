@@ -64,10 +64,10 @@ def command_new_user(m):
     elif (m.new_chat_member.username == None and m.new_chat_member.first_name != None and m.new_chat_member.last_name == None):
         bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, grupo))
 
-@bot.message_handler(content_types=['left_chat_member'])
-def command_left_user(m):
-    cid = m.chat.id
-    bot.send_message(cid, u"@{0} Gracias por pasar!! Bye!!".format(left_chat_member.username))
+#@bot.message_handler(content_types=['left_chat_member'])
+#def command_left_user(m):
+#    cid = m.chat.id
+#    bot.send_message(cid, u"@{0} Gracias por pasar!! Bye!!".format(left_chat_member.username))
 
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
