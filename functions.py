@@ -160,7 +160,7 @@ def command_feed(m):
 @bot.message_handler(commands=['neofeed'])
 def neo_feed(m):
     cid = m.chat.id
-    url = str("https://neositelinux.com/feed/")
+    url = str("https://neositelinux.com/feed.xml")
     print (url)
     bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
 
