@@ -183,7 +183,7 @@ def command_mirrors(m):
     cid = m.chat.id
     mensaje = '''
 Para tener los mirrors actualizados y poder elegir los mejores hay que usar el siguiente comando:
-`$ sudo pacman-mirrors -g`
+`$ sudo pacman-mirrors -f`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
