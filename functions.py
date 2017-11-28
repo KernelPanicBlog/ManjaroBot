@@ -45,7 +45,7 @@ def get_feed(url):
 #######################################
 
 #Functions
-@bot.message_handler(content_types=['new_chat_member'])
+@bot.message_handler(content_types=['new_chat_members'])
 def command_new_user(m):
     cid = m.chat.id
     grupo = m.chat.title

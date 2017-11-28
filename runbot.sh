@@ -1,7 +1,7 @@
 #!/bin/bash
 while true
 do
-python manjarobot.py
+python /home/pi/Documents/git/ManjaroBot/manjarobot.py
 echo "¡The bot is crashed!"
 echo "Rebooting in:"
 for i in 1
