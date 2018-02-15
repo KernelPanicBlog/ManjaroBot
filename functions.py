@@ -72,7 +72,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /reset\n /firefoxmaia\n /steam\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -100,23 +100,15 @@ def command_support(m):
 @bot.message_handler(commands=['isos'])
 def command_isos(m):
     markup = types.InlineKeyboardMarkup()
-    xfce32 = types.InlineKeyboardButton('XFCE 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.3-stable-i686.iso.torrent")
-    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-xfce-17.0.3-stable-x86_64.iso.torrent")
-    kde32 = types.InlineKeyboardButton('Plasma 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.3-stable-i686.iso.torrent")
-    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.0.3-stable-x86_64.iso.torrent")
-    gnome32 = types.InlineKeyboardButton('Gnome 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.3-stable-i686.iso.torrent")
-    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.0.3-stable-x86_64.iso.torrent")
-    net32 = types.InlineKeyboardButton('Manjaro-Architect 32 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.2-stable-i686.iso.torrent")
-    net64 = types.InlineKeyboardButton('Manjaro-Architect 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.2-stable-x86_64.iso.torrent")
-    markup.row(xfce32)
+    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.1.4-stable-x86_64.iso.torrent")
+    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.1.4-stable-x86_64.iso.torrent")
+    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.1.4-stable-x86_64.iso.torrent")
+    net64 = types.InlineKeyboardButton('Manjaro-Architect 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.4-stable-x86_64.iso.torrent")
     markup.row(xfce64)
-    markup.row(kde32)
     markup.row(kde64)
-    markup.row(gnome32)
     markup.row(gnome64)
-    markup.row(net32)
     markup.row(net64)
-    bot.send_message(m.chat.id, "Choose an ISO file for download:", reply_markup=markup)
+    bot.send_message(m.chat.id, "Choose an ISO file for download - 32bits are deprecated:", reply_markup=markup)
 
 
 @bot.message_handler(commands=['blog'])
@@ -155,7 +147,7 @@ def command_feed(m):
         print (url)
         bot.send_message(cid, get_feed(url[1]),disable_web_page_preview=True,parse_mode="markdown")
     except IndexError:
-        bot.send_message( cid, "Missing Argument - Example: /feed http://www.example.com" )
+        bot.send_message( cid, "Falta un argumento - Ejemplo: /feed http://www.example.com" )
 
 @bot.message_handler(commands=['neofeed'])
 def neo_feed(m):
@@ -344,15 +336,15 @@ def command_blackscreen(m):
     markup.row(itembtnblckscr)
     bot.send_message(m.chat.id, 'Solución a la pantalla negra en logueo del sistema.',reply_markup=markup)
 
-@bot.message_handler(commands=['reset'])
-def command_reset(m):
-    cid = m.chat.id
-    mensaje = '''
-Volver Manjaro a su configuración original:
-`$ sudo pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
-Esto borra todo a excepción del sistema base.
-        '''
-    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+#@bot.message_handler(commands=['reset'])
+#def command_reset(m):
+#    cid = m.chat.id
+#    mensaje = '''
+#Volver Manjaro a su configuración original(usar bajo tu propio riesgo):
+#`$ sudo pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
+#Esto borra todo a excepción del sistema base.
+#        '''
+#    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['aur_manual'])
 def command_aurmanual(m):
