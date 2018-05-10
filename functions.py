@@ -403,7 +403,7 @@ Lo que tenés que hacer es ir a la terminal:
  Ejemplo: /dev/sdb
 
 2) Usando el comando dd (data duplicator):
- `sudo dd if=/home/$USER/Escritorio/distro_gnu_linux.iso of=/dev/sdb status=progress`
+ `sudo dd if=/home/$USER/Escritorio/distro_gnu_linux.iso of=/dev/sdb bs=4M status=progress`
  
   **ASUMIENDO QUE LA IMAGEN ESTÁ EN EL ESCRITORIO**, si no cambialo por la ruta donde lo tengas, al igual que el nombre de la iso.
 
