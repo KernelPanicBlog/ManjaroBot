@@ -388,12 +388,12 @@ Para solucionar problemas con Steam:
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['manjaro_uefi'])
-def command_ubuntu(m):
+def command_manjaro_uefi(m):
     cid = m.chat.id
     bot.send_message( cid, 'https://www.youtube.com/watch?v=QDOsILoHn7Q&')
     
 @bot.message_handler(commands=['dd'])
-def command_firefoxmaia(m):
+def command_dd(m):
     cid = m.chat.id
     mensaje = '''
 Lo que tenés que hacer es ir a la terminal:
@@ -403,11 +403,11 @@ Lo que tenés que hacer es ir a la terminal:
  Ejemplo: /dev/sdb
 
 2) Usando el comando dd (data duplicator):
- `sudo dd if=/home/$USER/Escritorio/debian-live-8.7.1-i386-cinnamon-desktop.iso of=/dev/sdb status=progress`
+ `sudo dd if=/home/$USER/Escritorio/distro_gnu_linux.iso of=/dev/sdb status=progress`
  
-  ASUMIENDO QUE LA IMAGEN ESTÁ EN EL ESCRITORIO, si no cambialo por la ruta donde lo tengas, al igual que el nombre de la iso.
+  **ASUMIENDO QUE LA IMAGEN ESTÁ EN EL ESCRITORIO**, si no cambialo por la ruta donde lo tengas, al igual que el nombre de la iso.
 
- CUIDADO: SI NO PONÉS BIEN EL DESTINO, en éste caso /dev/sdb, NO VA A DUDAR EN DESTRUIR LA INFO QUE TENGAS AHÍ.
+ **CUIDADO: SI NO PONÉS BIEN EL DESTINO, en éste caso /dev/sdb, NO VA A DUDAR EN DESTRUIR LA INFO QUE TENGAS AHÍ.**
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
