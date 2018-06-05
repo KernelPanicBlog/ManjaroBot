@@ -316,7 +316,7 @@ def command_last_changes(m):
 def command_telegram(m):
     cid = m.chat.id
     mensaje = '''
-Como instalar Telegram desde la web oficial:
+**Como instalar Telegram desde la web oficial:**
 
 1a) `$ wget https://telegram.org/dl/desktop/linux` (64 Bits)
 1b) `$ wget https://telegram.org/dl/desktop/linux32` (32 Bits)
@@ -325,6 +325,9 @@ Como instalar Telegram desde la web oficial:
 4) `$ cd home/USUARIO/.local/share/applications/Telegram`
 4a) `$ ./Telegram`
 5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
+
+**Instalación desde los repositorios de Manjaro:**
+`sudo pacman -S telegram-desktop`
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 

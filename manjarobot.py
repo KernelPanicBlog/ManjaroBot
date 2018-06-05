@@ -5,7 +5,7 @@ import functions
 def listener(messages):
     for m in messages:
         cid = m.chat.id
-        title = u"m.chat.title"
+        title = 'm.chat.title'
         if m.content_type == 'text':
             print (("[" + title.encode("utf-8") + "]: " + m.text))
 
