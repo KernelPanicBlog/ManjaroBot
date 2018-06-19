@@ -394,7 +394,12 @@ Para solucionar problemas con Steam:
 def command_manjaro_uefi(m):
     cid = m.chat.id
     bot.send_message( cid, 'https://www.youtube.com/watch?v=QDOsILoHn7Q&')
-    
+
+@bot.message_handler(commands=['command_line_tutorial'])
+def command_line_tutorial(m):
+    cid = m.chat.id
+    bot.send_message( cid, 'https://www.youtube.com/playlist?list=PLS1QulWo1RIb9WVQGJ_vh-RQusbZgO_As')
+
 @bot.message_handler(commands=['dd'])
 def command_dd(m):
     cid = m.chat.id
