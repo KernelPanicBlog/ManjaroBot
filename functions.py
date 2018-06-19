@@ -72,7 +72,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -100,10 +100,10 @@ def command_support(m):
 @bot.message_handler(commands=['isos'])
 def command_isos(m):
     markup = types.InlineKeyboardMarkup()
-    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.1.4-stable-x86_64.iso.torrent")
-    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-kde-17.1.4-stable-x86_64.iso.torrent")
-    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-gnome-17.1.4-stable-x86_64.iso.torrent")
-    net64 = types.InlineKeyboardButton('Manjaro-Architect 64 Bits', url="https://downloads.sourceforge.net/manjarotorrents/manjaro-architect-17.0.4-stable-x86_64.iso.torrent")
+    xfce64 = types.InlineKeyboardButton('XFCE 64 Bits', url="https://osdn.net/dl/manjaro/manjaro-xfce-17.1.10-stable-x86_64.iso.torrent")
+    kde64 = types.InlineKeyboardButton('Plasma 64 Bits', url="https://osdn.net/dl/manjaro/manjaro-kde-17.1.10-stable-x86_64.iso.torrent")
+    gnome64 = types.InlineKeyboardButton('Gnome 64 Bits', url="https://osdn.net/dl/manjaro/manjaro-gnome-17.1.10-stable-x86_64.iso.torrent")
+    net64 = types.InlineKeyboardButton('Manjaro-Architect 64 Bits', url="https://osdn.net/dl/manjaro/manjaro-architect-17.1.7-stable-x86_64.iso.torrent")
     markup.row(xfce64)
     markup.row(kde64)
     markup.row(gnome64)
