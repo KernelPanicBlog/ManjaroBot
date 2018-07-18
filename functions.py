@@ -72,7 +72,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /aurman\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -418,6 +418,38 @@ Lo que tenés que hacer es ir a la terminal:
  **CUIDADO: SI NO PONÉS BIEN EL DESTINO, en éste caso /dev/sdb, NO VA A DUDAR EN DESTRUIR LA INFO QUE TENGAS AHÍ.**
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
+
+@bot.message_handler(commands=['aurman'])
+def command_aurman(m):
+    cid = m.chat.id
+    mensaje = '''
+Para instalar aurman:
+
+(ejecuta los comandos que necesites uno tras otro y si tienes alguna duda manda foto con el problema respondiendo a este mensaje)
+
+Si aún tienes yaourt instalado puedes hacer esto ahora o al finalizar la instalación:
+
+`sudo pacman -Rns yaourt --noconfirm`
+
+Ahora a instalar aurman:
+
+`gpg --recv-keys 4C3CE98F9579981C21CA1EC3465022E743D71E39`
+
+`git clone https://aur.archlinux.org/aurman.git` (chequear el directorio donde estás)
+
+`cd aurman`
+
+`makepkg -si`
+
+Al acabar se quedará una carpeta llamada aurman en tu home o en la carpeta donde estuviera trabajando la terminal que abriste, puedes borrar esa carpeta
+
+#aurman #yaourt #instalar #desinstalar #pacman #aur
+
+Colaboración de @Jinkros
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
+
 
 ###############################################################################
 #Specials functions
