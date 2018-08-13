@@ -285,7 +285,17 @@ def command_mpis(m):
     markup = types.InlineKeyboardMarkup()
     itembtnmpis = types.InlineKeyboardButton('Blog', url="http://kernelpanicblog.wordpress.com")
     markup.row(itembtnmpis)
-    bot.send_message(m.chat.id, 'MPIS Manjaro Post Installation Script es una herramienta desarrollada por algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y apoyo a un usuario novel como experto, permitiendo automatizar algunas tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el comando [yaourt -S mpis --noconfirm]. Algun comentario o sugerencia puedes hacerla en el grupo.',reply_markup=markup)
+    mensaje = '''
+MPIS: Manjaro Post Installation Script es una herramienta desarrollada por 
+algunos usuarios de este grupo, cuyo objetivo es brindar una utilidad y 
+apoyo a un usuario novel como experto, permitiendo automatizar algunas 
+tareas tediosas o consecutivas puedes instalarla en tu Manjaro con el 
+comando `aurman -S mpis --noconfirm` . 
+NOTA: Usá el helper que más se adapta a vos porque yaourt está
+discontinuado, nosotros preferimos aurman.
+Algun comentario o sugerencia puedes hacerla en el grupo.
+'''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 @bot.message_handler(commands=['github'])
 def command_github(m):
