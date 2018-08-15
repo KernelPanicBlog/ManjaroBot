@@ -49,10 +49,17 @@ def get_feed(url):
 def command_new_user(m):
     cid = m.chat.id
     grupo = m.chat.title
-    if len(m.new_chat_member.first_name) > 40:
-	uid = m.from_user.id
+    uid = m.from_user.id
+    
+    name = m.new_chat_member.first_name
+    check_name = name.find("VX,QQ")
+
+    if len(m.new_chat_member.first_name) > 30: #Filtro AntiSpam 1
 	bot.kick_chat_member(cid,uid)
 	bot.delete_message(cid)
+    elif check_name == 0: #Filtro AntiSpam 2 (temporal)
+        bot.kick_chat_member(cid,uid)
+        bot.delete_message(cid)
     else:
     	if (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
         	bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, m.new_chat_member.last_name, m.new_chat_member.username, grupo))
