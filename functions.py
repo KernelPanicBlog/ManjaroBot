@@ -53,11 +53,15 @@ def command_new_user(m):
     
     name = m.new_chat_member.first_name
     check_name = name.find("VX,QQ")
+    check_name2 = name.find("[VX,QQ")
 
-    if len(m.new_chat_member.first_name) > 30: #Filtro AntiSpam 1
+    if (len(m.new_chat_member.first_name) > 30): #Filtro AntiSpam 1
 	bot.kick_chat_member(cid,uid)
 	bot.delete_message(cid)
-    elif check_name == 0: #Filtro AntiSpam 2 (temporal)
+    elif (check_name == 0): #Filtro AntiSpam 2 (temporal)
+        bot.kick_chat_member(cid,uid)
+        bot.delete_message(cid)
+    elif (check_name2 == 0): #Filtro AntiSpam 3 (temporal)
         bot.kick_chat_member(cid,uid)
         bot.delete_message(cid)
     else:
