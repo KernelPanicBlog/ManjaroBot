@@ -51,11 +51,11 @@ def command_new_user(m):
     grupo = m.chat.title
     uid = m.from_user.id
     
-    name = m.new_chat_member.first_name
-    check_name = name.find("VX,QQ")
-    check_name2 = name.find("[VX,QQ")
+    name = m.new_chat_members.first_name
+    check_name = name.find("VX.QQ")
+    check_name2 = name.find("[VX.QQ")
 
-    if (len(m.new_chat_member.first_name) > 30): #Filtro AntiSpam 1
+    if (len(m.new_chat_members.first_name) > 30): #Filtro AntiSpam 1
 	bot.kick_chat_member(cid,uid)
 	bot.delete_message(cid)
     elif (check_name == 0): #Filtro AntiSpam 2 (temporal)
@@ -65,20 +65,20 @@ def command_new_user(m):
         bot.kick_chat_member(cid,uid)
         bot.delete_message(cid)
     else:
-    	if (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, m.new_chat_member.last_name, m.new_chat_member.username, grupo))
-    	elif (m.new_chat_member.username != None and m.new_chat_member.first_name == None and m.new_chat_member.last_name == None):
-        	bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.username, grupo))
-    	elif (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name == None):
-        	bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name,m.new_chat_member.username, grupo))
-    	elif (m.new_chat_member.username != None and m.new_chat_member.first_name == None and m.new_chat_member.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.last_name,m.new_chat_member.username, grupo))
-    	elif (m.new_chat_member.username == None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name,m.new_chat_member.last_name,grupo))
-    	elif (m.new_chat_member.username == None and m.new_chat_member.first_name == None and m.new_chat_member.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.last_name, grupo))
-    	elif (m.new_chat_member.username == None and m.new_chat_member.first_name != None and m.new_chat_member.last_name == None):
-        	bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, grupo))
+    	if (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
+        	bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, m.new_chat_members.last_name, m.new_chat_members.username, grupo))
+    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name == None):
+        	bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.username, grupo))
+    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
+        	bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.username, grupo))
+    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
+        	bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name,m.new_chat_members.username, grupo))
+    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
+        	bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.last_name,grupo))
+    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
+        	bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name, grupo))
+    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
+        	bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, grupo))
 
 #@bot.message_handler(content_types=['left_chat_member'])
 #def command_left_user(m):
@@ -348,13 +348,13 @@ def command_telegram(m):
     mensaje = '''
 **Como instalar Telegram desde la web oficial:**
 
-1a) `$ wget https://telegram.org/dl/desktop/linux` (64 Bits)
-1b) `$ wget https://telegram.org/dl/desktop/linux32` (32 Bits)
-2) `$ tar -xvf linux`
-3) `$ mv Telegram  home/USUARIO/.local/share/applications`
-4) `$ cd home/USUARIO/.local/share/applications/Telegram`
-4a) `$ ./Telegram`
-5) Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
+1a. `$ wget https://telegram.org/dl/desktop/linux` (64 Bits)
+1b. `$ wget https://telegram.org/dl/desktop/linux32` (32 Bits)
+2. `$ tar -xvf linux`
+3. `$ mv Telegram  home/USUARIO/.local/share/applications`
+4. `$ cd home/USUARIO/.local/share/applications/Telegram`
+4a. `$ ./Telegram`
+5. Se cierra la aplicación desde Quit Telegram y se ejecuta normalmente. Esto es para que se genere el ícono correctamente en el menú.
 
 **Instalación desde los repositorios de Manjaro:**
 `sudo pacman -S telegram-desktop`
@@ -480,6 +480,28 @@ Colaboración de @Jinkros
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
+
+@bot.message_handler(commands=['yay_install'])
+def command_keys(m):
+    cid = m.chat.id
+    mensaje = '''
+Como instalar yay en Manjaro (AUR Helper):
+
+Primera opción (ultima versión):
+
+1. `$ git clone https://aur.archlinux.org/yay.git`
+2. `$ cd yay`
+3. `$ makepkg -si`
+
+Segunda opción (repo oficial de Manjaro versión menos actualizada):
+
+1. `$ sudo pacman -S yay`
+
+#pacman #aur #aurhelper #helper #yay
+
+Colaboración de @rirschach
+        '''
+    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
 ###############################################################################
 #Specials functions
