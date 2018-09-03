@@ -55,30 +55,30 @@ def command_new_user(m):
     check_name = name.find("VX.QQ")
     check_name2 = name.find("[VX.QQ")
 
-    if (len(m.new_chat_members.first_name) > 30): #Filtro AntiSpam 1
-	bot.kick_chat_member(cid,uid)
-	bot.delete_message(cid)
-    elif (check_name == 0): #Filtro AntiSpam 2 (temporal)
-        bot.kick_chat_member(cid,uid)
-        bot.delete_message(cid)
-    elif (check_name2 == 0): #Filtro AntiSpam 3 (temporal)
-        bot.kick_chat_member(cid,uid)
-        bot.delete_message(cid)
-    else:
-    	if (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, m.new_chat_members.last_name, m.new_chat_members.username, grupo))
-    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name == None):
-        	bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.username, grupo))
-    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
-        	bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.username, grupo))
-    	elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name,m.new_chat_members.username, grupo))
-    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.last_name,grupo))
-    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
-        	bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name, grupo))
-    	elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
-        	bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, grupo))
+#    if (len(m.new_chat_members.first_name) > 30): #Filtro AntiSpam 1
+#	bot.kick_chat_member(cid,uid)
+#	bot.delete_message(cid)
+#    elif (check_name == 0): #Filtro AntiSpam 2 (temporal)
+#        bot.kick_chat_member(cid,uid)
+#        bot.delete_message(cid)
+#    elif (check_name2 == 0): #Filtro AntiSpam 3 (temporal)
+#        bot.kick_chat_member(cid,uid)
+#        bot.delete_message(cid)
+#    else:
+    if (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, m.new_chat_members.last_name, m.new_chat_members.username, grupo))
+    elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name == None):
+        bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.username, grupo))
+    elif (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
+        bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.username, grupo))
+    elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name,m.new_chat_members.username, grupo))
+    elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.last_name,grupo))
+    elif (m.new_chat_members.username == None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name, grupo))
+    elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
+        bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, grupo))
 
 #@bot.message_handler(content_types=['left_chat_member'])
 #def command_left_user(m):
