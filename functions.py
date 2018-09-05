@@ -51,9 +51,9 @@ def command_new_user(m):
     grupo = m.chat.title
     uid = m.from_user.id
     
-    name = m.new_chat_members.first_name
-    check_name = name.find("VX.QQ")
-    check_name2 = name.find("[VX.QQ")
+#    name = m.new_chat_members.first_name
+#    check_name = name.find("VX.QQ")
+#    check_name2 = name.find("[VX.QQ")
 
 #    if (len(m.new_chat_members.first_name) > 30): #Filtro AntiSpam 1
 #	bot.kick_chat_member(cid,uid)
