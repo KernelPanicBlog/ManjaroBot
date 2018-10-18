@@ -144,22 +144,7 @@ def command_blog(m):
     else:
         bot.send_message( cid, "Missing Argument" )
 
-# @bot.message_handler(commands=['wiki'])
-# def command_wiki(m):
-#     cid = m.chat.id
-#     busqueda = 'https://wiki.manjaro.org/index.php?search=%s'
-#     if len(m.text.split()) >= 2:
-#         palabras = m.text.split()
-#         palabras.pop(0)
-#         a_buscar = '+'.join(palabras)
-#         url = (busqueda % a_buscar)
-#         r = requests.head(url)
-#         if r.status_code != 200:
-#             return bot.send_message( cid, "Missing Argument" )
-#         else:
-#             return bot.send_message(cid, get_feed(url),disable_web_page_preview=True,parse_mode="markdown")
-
-@bot.message_handler(commands=['feed'])
+bot.message_handler(commands=['feed'])
 def command_feed(m):
     cid = m.chat.id
     url = str(m.text).split(None,1)
@@ -505,15 +490,27 @@ Colaboración de @rirschach
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
+
+@bot.message_handler(commands=['kick_user'])
+def command_kick_user(m):
+        user = str(m.text).split(None,1)
+	bot.send_message_checking_permission(m, kickChatMember.user)
+
+
 ###############################################################################
 #Specials functions
 def send_message_checking_permission(m, response):
     cid = m.chat.id
     uid = m.from_user.id
-    if uid != user.user_id:
-        bot.send_message(cid, "You don't have permissions for use this bot")
-        return
-    bot.send_message(cid, response)
+    adminList = bot.get_chat_administrators(cid)
+
+    for admin in adminList:
+	if uid == admin:
+		bot.send_message(cid, response)
+		return
+	else:
+		bot.send_message(cid, "You don't have permissions for use this command")
+		return
 
 ###############################################################################
 print('Functions loaded')
