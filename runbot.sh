@@ -10,7 +10,7 @@ do
 echo "$i..."
 done
 echo "###########################################"
-echo "#Bot is restarting now                    #"
+echo "#ManjaroBot is restarting now             #"
 echo "###########################################"
 done
 

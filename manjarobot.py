@@ -12,7 +12,8 @@ def listener(messages):
 functions.bot.set_update_listener(listener)
 
 #############################################
-#Bot starts here
+#Bot starts here                            #
+#############################################
 print('Bot Started')
 print('Please visite kernelpanicblog.wordpress.com')
 functions.bot.polling(none_stop=True)

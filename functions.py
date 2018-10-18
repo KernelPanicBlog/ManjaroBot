@@ -65,20 +65,20 @@ def command_new_user(m):
 #        bot.kick_chat_member(cid,uid)
 #        bot.delete_message(cid)
 #    else:
-    if (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
-        bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, m.new_chat_members.last_name, m.new_chat_members.username, grupo))
-    elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name == None):
-        bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.username, grupo))
-    elif (m.new_chat_members.username != None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
-        bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.username, grupo))
-    elif (m.new_chat_members.username != None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
-        bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name,m.new_chat_members.username, grupo))
-    elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name != None):
-        bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name,m.new_chat_members.last_name,grupo))
-    elif (m.new_chat_members.username == None and m.new_chat_members.first_name == None and m.new_chat_members.last_name != None):
-        bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.last_name, grupo))
-    elif (m.new_chat_members.username == None and m.new_chat_members.first_name != None and m.new_chat_members.last_name == None):
-        bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_members.first_name, grupo))
+    if (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, m.new_chat_member.last_name, m.new_chat_member.username, grupo))
+    elif (m.new_chat_member.username != None and m.new_chat_member.first_name == None and m.new_chat_member.last_name == None):
+        bot.send_message(cid, u"Bienvenido!! @{0} a {1}. No tenés nombres, podrías completar los datos. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.username, grupo))
+    elif (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name == None):
+        bot.send_message(cid, u"Bienvenido {0} A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name,m.new_chat_member.username, grupo))
+    elif (m.new_chat_member.username != None and m.new_chat_member.first_name == None and m.new_chat_member.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0}!! A.K.A. @{1} a {2}. Te sugerimos leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.last_name,m.new_chat_member.username, grupo))
+    elif (m.new_chat_member.username == None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0} {1} a {2}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name,m.new_chat_member.last_name,grupo))
+    elif (m.new_chat_member.username == None and m.new_chat_member.first_name == None and m.new_chat_member.last_name != None):
+        bot.send_message(cid, u"Bienvenido {0}!! a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.last_name, grupo))
+    elif (m.new_chat_member.username == None and m.new_chat_member.first_name != None and m.new_chat_member.last_name == None):
+        bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en #Normas.".format(m.new_chat_member.first_name, grupo))
 
 #@bot.message_handler(content_types=['left_chat_member'])
 #def command_left_user(m):
@@ -92,7 +92,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /aurman\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /aurman\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -496,6 +496,8 @@ Primera opción (ultima versión):
 Segunda opción (repo oficial de Manjaro versión menos actualizada):
 
 1. `$ sudo pacman -S yay`
+
+Si quieres que yay tenga colores, hay que habilitar la funcion en pacman descomentando la linea **Color** en `/etc/pacman.conf`
 
 #pacman #aur #aurhelper #helper #yay
 
