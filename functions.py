@@ -79,7 +79,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /admin_call\ /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -481,6 +481,19 @@ def command_kick_user(m):
         if bot.get_chat_member(cid, uid).status in ["administrator", "creator"] and bot.get_chat_member(cid, m.reply_to_message.from_user.id).status not in ["administrator", "creator"]:
            bot.send_message(cid, 'Hasta la vista, Baby')
            bot.kick_chat_member(cid, m.reply_to_message.from_user.id)           
+
+@bot.message_handler(commands=['admin_call'])
+def command_admin_call(m):
+        cid = m.chat.id
+        uid = m.from_user.id
+        admins = bot.get_chat_administrators(cid)
+        for admin in admins:
+           if admin.user.is_bot == False:
+              try:
+                  bot.send_message(admin.user.id, "ATENCION ADMINS - LOS RECLAMAN EN EL GRUPO")
+              except Exception as e:
+                  pass
+        bot.reply_to(m, "Se ha avisado a los admins")
 
 ###############################################################################
 #Specials functions
