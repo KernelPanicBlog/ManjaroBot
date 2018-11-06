@@ -54,20 +54,6 @@ def command_new_user(m):
     itembtnnormas = types.InlineKeyboardButton("<Click Aquí>", url="https://t.me/manjarolinuxes/201703")
     markup.row(itembtnnormas)
     
-#    name = m.new_chat_members.first_name
-#    check_name = name.find("VX.QQ")
-#    check_name2 = name.find("[VX.QQ")
-
-#    if (len(m.new_chat_members.first_name) > 30): #Filtro AntiSpam 1
-#	bot.kick_chat_member(cid,uid)
-#	bot.delete_message(cid)
-#    elif (check_name == 0): #Filtro AntiSpam 2 (temporal)
-#        bot.kick_chat_member(cid,uid)
-#        bot.delete_message(cid)
-#    elif (check_name2 == 0): #Filtro AntiSpam 3 (temporal)
-#        bot.kick_chat_member(cid,uid)
-#        bot.delete_message(cid)
-#    else:
     if (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
         bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en el botón.".format(m.new_chat_member.first_name, m.new_chat_member.last_name, m.new_chat_member.username, grupo))
         bot.send_message(cid, "Normas:", reply_markup=markup)
@@ -90,19 +76,10 @@ def command_new_user(m):
         bot.send_message(cid, u"Bienvenido {0} a {1}. No tenes alias, seria mejor que te crees uno. Te sugerimos tambien leer las reglas en el mensaje anclado o click en el botón.".format(m.new_chat_member.first_name, grupo))
         bot.send_message(cid, "Normas:", reply_markup=markup)
 
-#@bot.message_handler(content_types=['left_chat_member'])
-#def command_left_user(m):
-#    cid = m.chat.id
-#    bot.send_message(cid, u"@{0} Gracias por pasar!! Bye!!".format(left_chat_member.username))
-
-# Elimina al usuario que manda el mensaje en el chat en que se ha enviado
-#def kickFromMessage(m):
-#  bot.kickChatMember(m.chat.id, m.from_user.id)
-
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -364,16 +341,6 @@ def command_blackscreen(m):
     markup.row(itembtnblckscr)
     bot.send_message(m.chat.id, 'Solución a la pantalla negra en logueo del sistema.',reply_markup=markup)
 
-#@bot.message_handler(commands=['reset'])
-#def command_reset(m):
-#    cid = m.chat.id
-#    mensaje = '''
-#Volver Manjaro a su configuración original(usar bajo tu propio riesgo):
-#`$ sudo pacman -R $(comm -23 <(pacman -Qq | sort) <((for i in $(pacman -Qqg base); do pactree -ul "$i"; done) | sort -u))`
-#Esto borra todo a excepción del sistema base.
-#        '''
-#    bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
-
 @bot.message_handler(commands=['aur_manual'])
 def command_aurmanual(m):
     cid = m.chat.id
@@ -499,29 +466,35 @@ Colaboración de @rirschach
         '''
     bot.send_message( cid, mensaje,disable_web_page_preview=True,parse_mode="markdown")
 
+@bot.message_handler(commands=['invitameuncafe'])
+def command_cafe(m):
+    cid = m.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itembtncafe = types.InlineKeyboardButton('Te invito!', url="https://www.paypal.me/neoranger")
+    markup.row(itembtncafe)
+    bot.send_message(cid, '¿Te parece que el proyecto merece crecer? Invítame un café!.',reply_markup=markup)
 
-@bot.message_handler(commands=['kick_user'])
+@bot.message_handler(commands=['kick'])
 def command_kick_user(m):
 	cid = m.chat.id
-        user = str(m.text).split(None,1)
-	send_message_checking_permission(cid, m.kickChatMember.user)
-
+        uid = m.from_user.id
+        if bot.get_chat_member(cid, uid).status in ["administrator", "creator"] and bot.get_chat_member(cid, m.reply_to_message.from_user.id).status not in ["administrator", "creator"]:
+           bot.send_message(cid, 'Hasta la vista, Baby')
+           bot.kick_chat_member(cid, m.reply_to_message.from_user.id)           
 
 ###############################################################################
 #Specials functions
-def send_message_checking_permission(m, response):
-    cid = m.chat.id
-    uid = m.from_user.id
-    adminList = bot.get_chat_administrators(cid)
-
-    for admin in adminList:
-	if uid == admin:
-		bot.kickChatMember(cid, uid)
-		bot.send_message(cid, response)
-		return
-	else:
-		bot.send_message(cid, "You don't have permissions for use this command")
-		return
+#def send_message_checking_permission(m, response):
+#    cid = m.chat.id
+#    uid = m.from_user.id
+#    adminList = bot.get_chat_administrators(cid)
+#
+#    if uid in adminList:
+#	bot.send_message(cid)
+#	return
+#    else:
+#        bot.send_message(cid, "You don't have permissions for use this command")
+#	return
 
 ###############################################################################
 print('Functions loaded')
