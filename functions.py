@@ -292,7 +292,7 @@ def command_github(m):
 def command_virtualbox(m):
     cid = m.chat.id
     markup = types.InlineKeyboardMarkup()
-    itembtnvbox = types.InlineKeyboardButton('Solución', url="http://telegra.ph/Instalacion-de-VirtualBox-en-Manjaro-07-21")
+    itembtnvbox = types.InlineKeyboardButton('Solución', url="https://wiki.manjaro.org/index.php?title=VirtualBox")
     markup.row(itembtnvbox)
     bot.send_message(m.chat.id, 'Como instalar VirtualBox en Arch-Manjaro-Antergos',reply_markup=markup)
 
