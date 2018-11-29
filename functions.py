@@ -50,10 +50,15 @@ def command_new_user(m):
     cid = m.chat.id
     grupo = m.chat.title
     uid = m.from_user.id
+    usuario = bot.get_chat_member(cid, m.new_chat_member.id).user
+    bots = m.new_chat_member.id
     markup = types.InlineKeyboardMarkup()
     itembtnnormas = types.InlineKeyboardButton("<Click Aquí>", url="https://t.me/manjarolinuxes/201703")
     markup.row(itembtnnormas)
     
+    if usuario.is_bot:
+       bot.kick_chat_member(cid, bots)
+
     if (m.new_chat_member.username != None and m.new_chat_member.first_name != None and m.new_chat_member.last_name != None):
         bot.send_message(cid, u"Bienvenido {0} {1} !! A.K.A. @{2} a {3}. Te sugerimos leer las reglas en el mensaje anclado o click en el botón.".format(m.new_chat_member.first_name, m.new_chat_member.last_name, m.new_chat_member.username, grupo))
         bot.send_message(cid, "Normas:", reply_markup=markup)
@@ -79,7 +84,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /mpis\n /admin_call\ /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /install_de\n /mpis\n /admin_call\ /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
@@ -385,7 +390,7 @@ Para solucionar problemas con Steam:
 @bot.message_handler(commands=['manjaro_uefi'])
 def command_manjaro_uefi(m):
     cid = m.chat.id
-    bot.send_message( cid, 'https://www.youtube.com/watch?v=QDOsILoHn7Q&')
+    bot.send_message( cid, 'https://www.youtube.com/watch?v=UKWnTIZBVZE')
 
 @bot.message_handler(commands=['command_line_tutorial'])
 def command_line_tutorial(m):
@@ -494,6 +499,15 @@ def command_admin_call(m):
               except Exception as e:
                   pass
         bot.reply_to(m, "Se ha avisado a los admins")
+
+
+@bot.message_handler(commands=['install_de'])
+def command_install_de(m):
+    cid = m.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itembtndes = types.InlineKeyboardButton('Link a la Wiki de Manjaro', url="https://wiki.manjaro.org/index.php/Install_Desktop_Environments#i3")
+    markup.row(itembtndes)
+    bot.send_message(m.chat.id, 'Como instalar diferentes entornos de escritorio en Manjaro',reply_markup=markup)
 
 ###############################################################################
 #Specials functions
