@@ -84,7 +84,7 @@ def command_new_user(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\ /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /install_de\n /mpis\n /admin_call\ /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
+    bot.send_message( cid, u"Comandos Disponibles:\n /blog\n /neofeed\n /manjarofeed\n /kdefeed\n /id\n /mirrors\n /keys\n /update\n /orphans\n /listpkg\n /yay_install\n /manjaro_uefi\n /dd\n /last_update_changes\n /telegram\n /virtualbox\n /youtubedl\n /blackscreen\n /firefoxmaia\n /steam\n /command_line_tutorial\n /install_de\n /mpis\n /admin_call\n /github\n /about\n /invitameuncafe\n /support\n /isos\n /help\n") #
 
 @bot.message_handler(commands=['about'])
 def command_about(m):
